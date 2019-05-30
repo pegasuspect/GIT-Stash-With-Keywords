@@ -2,7 +2,7 @@
 Using git-stash with keywords instead of indexes.
 
 ### Installation:
-Just run 
+Just run the following commands in your Terminal or bash.
 ```bash
 git clone https://github.com/pegasuspect/GIT-Stash-With-Keywords.git # clone the repo
 cd GIT-Stash-With-Keywords # change directory
