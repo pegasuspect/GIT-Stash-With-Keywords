@@ -1,3 +1,4 @@
+
 stash() {
     stash_cut(){
         git stash list | cut -d: -f2,3
@@ -52,3 +53,4 @@ stash() {
     fi
     unset -f stash_cut
 }
+export -f stash

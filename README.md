@@ -2,11 +2,11 @@
 Using git-stash with keywords instead of indexes.
 
 ### Installation:
-Just run the following commands in your Terminal or bash.
+Just run the following commands in your Terminal or bash. This will install the function in _stash_function.sh_ to your **.bash_profile**
 ```bash
 git clone https://github.com/pegasuspect/GIT-Stash-With-Keywords.git # clone the repo
 cd GIT-Stash-With-Keywords # change directory
-./install.sh # declare the function
+./install.sh # install the function
 # This line is just a comment will do nothing :D
 ```
 
