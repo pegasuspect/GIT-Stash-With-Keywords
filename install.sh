@@ -1,4 +1,3 @@
-
 stash() {
     stash_cut(){
         git stash list | cut -d: -f2,3
@@ -12,16 +11,22 @@ stash() {
     elif [[ $1 = "-=" && ! -z $2 ]]; then
         git stash pop $(git stash list | \grep "$2" | head -1 | cut -d: -f1 | tr -d ' ')
     elif [[ $1 = "list" && ! -z $2 ]]; then
-        stash_index=$(git stash list | \grep "$2" | head -1 | cut -d: -f1 | tr -d ' ')
-        if [[ -z $stash_index ]]; then
-            return 0
+        local stash_index=$(git stash list | \grep "$2" | head -1 | cut -d: -f1 | tr -d ' ')
+        if [[ -z "$stash_index" ]]; then
+            echo "No stash with key: $2"
+            return 1
         fi
-        stash_cut | \grep "$2" --color=auto
-        stash_cut | \grep "$2" --color=auto | tr -C "*" "-"
+        stash_cut | head -1 | \grep "$2" --color=auto
+        stash_cut | head -1 | \grep "$2" --color=auto | tr -C "*" "-"
         echo
         git stash show $stash_index
     elif [[ $1 = "list" ]]; then
-        stash_cut
+        local list=$(stash_cut);
+        if [[ -z "$list" ]]; then
+            echo "Nothing is stashed. Your stash is empty!";
+			return 1
+        fi
+		stash_cut;
     else
         echo "
         Git Stash with Keywords
